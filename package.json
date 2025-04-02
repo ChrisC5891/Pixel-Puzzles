@@ -20,7 +20,8 @@
     "axios": "^1.6.8",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-select": "^5.10.1"
+    "react-select": "^5.10.1",
+    "styled-components": "^6.1.16"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
