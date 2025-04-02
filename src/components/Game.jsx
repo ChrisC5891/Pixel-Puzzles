@@ -42,23 +42,34 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1000px; /* Wider header */
+  max-width: 1000px;
   padding: 15px 20px;
-  background: linear-gradient(90deg, #00FF00, #000000); /* Green-to-black gradient */
+  background: linear-gradient(90deg, #00FF00, #000000);
   border-bottom: 3px solid #00FF00;
   box-shadow: 0 0 15px #00FF00;
   margin-bottom: 30px;
 `;
 
-const Title = styled.h1` /* Changed to h1 for prominence */
-  color: #00FF00;
+const Title = styled.h1`
+  color: #000000; /* Black for contrast */
   font-family: 'Courier New', monospace;
-  font-size: 2.5rem; /* Bigger and bolder */
+  font-size: 2.5rem;
   font-weight: bold;
-  text-shadow: 0 0 10px #00FF00, 0 0 20px #00FF00;
+  text-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00; /* Green shadow */
   margin: 0;
-  animation: ${glitch} 2s infinite alternate; /* Glitch effect */
-  letter-spacing: 2px; /* Spacing for futuristic feel */
+  animation: ${glitch} 2s infinite alternate;
+  letter-spacing: 2px;
+  background: rgba(255, 255, 255, 0.7); /* Light backdrop */
+  padding: 5px 10px;
+  border-radius: 5px;
+`;
+
+const UserInfo = styled.span`
+  color: #000000; /* Black for readability */
+  text-shadow: 0 0 5px #00FF00; /* Subtle green glow */
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  margin-left: 10px;
 `;
 
 const Button = styled.button`
@@ -247,7 +258,9 @@ const Game = () => {
   return (
     <Container role="main" aria-label="Neo Puzzle Game">
       <Header>
-        <Title>Neo Puzzle: {user} | Score: {score}</Title>
+        <Title>
+          Neo Puzzle: <UserInfo>{user} | Score: {score}</UserInfo>
+        </Title>
         <Button onClick={handleLogout} aria-label="Logout">Logout</Button>
       </Header>
       <GameArea background={backgroundColor} role="region" aria-label="Game Area">
