@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios'; // Change from require to import
 
 class PixelPuzzles {
   constructor(apiKey) {
@@ -9,7 +9,7 @@ class PixelPuzzles {
     this.images = [];
     this.currentImageIndex = 0;
     this.clues = [];
-    this.allGames = []; // For dropdown
+    this.allGames = [];
   }
 
   async startGame() {
@@ -28,25 +28,20 @@ class PixelPuzzles {
 
   guess(gameName) {
     if (this.guessesLeft <= 0) return { success: false, message: "Game over! No guesses left.", gameOver: true };
-
     const guessLower = gameName.toLowerCase();
     const targetLower = this.targetGame.name.toLowerCase();
     this.guesses.push(guessLower);
     this.guessesLeft--;
-
     if (guessLower === targetLower) {
       return { success: true, message: "Well done! 👍", gameOver: true, background: "paleGreen" };
     }
-
     const isRelated = guessLower.includes(targetLower.split(" ")[0]);
     this.currentImageIndex = Math.min(this.currentImageIndex + 1, this.images.length - 1);
     const nextImage = this.images[this.currentImageIndex];
     const clue = this.clues.shift() || "No more clues!";
-
     if (this.guessesLeft === 0) {
       return { success: false, message: `Game over! It was ${this.targetGame.name}.`, image: nextImage, gameOver: true };
     }
-
     return {
       success: false,
       message: `Wrong! Clue: ${clue}`,
@@ -61,4 +56,4 @@ class PixelPuzzles {
   }
 }
 
-module.exports = PixelPuzzles;
+export default PixelPuzzles; 
